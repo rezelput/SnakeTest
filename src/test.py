@@ -15,6 +15,11 @@ blue = (50, 153, 213)
 dis_width = 600
 dis_height = 400
 
+display_width = 800
+display_height = 600
+
+gameDisplay=pygame.display.set_mode((dis_width,dis_height))
+
 sc = pygame.display.set_mode((dis_width, dis_height))
 sc.fill((100, 150, 200))
  
@@ -31,6 +36,9 @@ class Background(pygame.sprite.Sprite):
 
 BackGround = Background('cloud.jpg', [0,0])
  
+bg = pygame.image.load("cloud.jpg")
+
+
 clock = pygame.time.Clock()
  
 snake_block = 10
@@ -38,7 +46,6 @@ snake_speed = 15
  
 font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35)
- 
  
 def Your_score(score):
     value = score_font.render("Баллы: " + str(score), True, yellow)
@@ -68,6 +75,9 @@ def gameLoop():
  
     snake_List = []
     Length_of_snake = 1
+
+    #INSIDE OF THE GAME LOOP
+    sc.blit(bg, (0, 0))
  
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
     foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
